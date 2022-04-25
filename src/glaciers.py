@@ -72,8 +72,9 @@ cc=0
 
 x = df.year
 y=df['Total']
-trendline(cc,x,df['Arctic-Canada'],'cadetblue','Arctic-Canada','',do_trendline=0)
-trendline(cc,x,df['Alaska'],'darkred','Alaska','',do_trendline=0)
+ax.axhline(y=0,linestyle='--',linewidth=th*1.5, color='grey')
+trendline(cc,x,df['Arctic-Canada'],'k','Arctic-Canada','',do_trendline=0)
+trendline(cc,x,df['Alaska'],'cadetblue','Alaska','',do_trendline=0)
 trendline(cc,x,df['Greenland'],'g','Greenland','',do_trendline=0)
 trendline(cc,x,y,'b','all Arctic land ice','',do_trendline=0)
 
@@ -84,7 +85,6 @@ ax.set_ylabel("cubic kilometers", color=fg)
 ax.get_xaxis().set_visible(True)
 ax.legend()
 ax.set_xlim(1970,2022)
-ax.axhline(y=0,linestyle='--',linewidth=th*1.5, color='grey')
 
 ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:,.0f}'))
 
@@ -92,9 +92,9 @@ ax2 = ax.twinx()
 # ax2.plot(df.year,df['Total']/-362,'-o',c='b',label='mm sea level rise')
 ax2.set_ylabel("mm sea level\nequivalent", color=fg)
 ax2.set_ylim(31*1.4,0)
-ax2.spines['right'].set_color('b')
-ax2.yaxis.label.set_color('b')
-ax2.tick_params(axis='y', colors='b')
+ax2.spines['right'].set_color('k')
+ax2.yaxis.label.set_color('k')
+ax2.tick_params(axis='y', colors='k')
 ax2.grid(False)
 
 
@@ -218,5 +218,7 @@ if ly=='p':
     # 1200 pixels wide x 675 is optimal for Twitter 16:9 aspect ratio
     my_dpi=300
     plt.savefig(fig_path+figname+'.png', bbox_inches='tight',figsize=(1200/my_dpi, 675/my_dpi), dpi=my_dpi)
+    my_dpi=144
+    plt.savefig(fig_path+figname+'_72dpi.png', bbox_inches='tight',figsize=(1200/my_dpi, 675/my_dpi), dpi=my_dpi)
     plt.savefig(fig_path+figname+'.eps', bbox_inches='tight')
     # os.system('open '+fig_path+figname+'.png')
