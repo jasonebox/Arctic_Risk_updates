@@ -7,6 +7,11 @@ Created on Mon Apr 25 06:43:05 2022
 
 http://psc.apl.uw.edu/research/projects/arctic-sea-ice-volume-anomaly/data/
 
+Volume time series and uncertainties:
+Schweiger, A., R. Lindsay, J. Zhang, M. Steele, H. Stern, Uncertainty in modeled arctic sea ice volume, J. Geophys. Res., doi:10.1029/2011JC007084, 2011
+
+Model details:
+Zhang, J.L. and D.A. Rothrock, “Modeling global sea ice with a thickness and enthalpy distribution model in generalized curvilinear coordinates“, Mon. Weather Rev., 131, 845-861, 2003
 
 """
 
@@ -72,6 +77,7 @@ cc=0
 
 x = df.year
 y=df['Total']
+ax.set_title('Arctic Glaciers '+str(iyear)+' to '+str(fyear))
 ax.axhline(y=0,linestyle='--',linewidth=th*1.5, color='grey')
 trendline(cc,x,df['Arctic-Canada'],'k','Arctic-Canada','',do_trendline=0)
 trendline(cc,x,df['Alaska'],'cadetblue','Alaska','',do_trendline=0)
@@ -127,8 +133,8 @@ fig_path='./Figs/'
 if ly=='p':
     # 1200 pixels wide x 675 is optimal for Twitter 16:9 aspect ratio
     my_dpi=300
-    plt.savefig(fig_path+figname+'.png', bbox_inches='tight',figsize=(1200/my_dpi, 675/my_dpi), dpi=my_dpi)
+    plt.savefig(fig_path+figname+'_'+str(my_dpi)+'dpi.png', bbox_inches='tight',figsize=(1200/my_dpi, 675/my_dpi), dpi=my_dpi)
     my_dpi=144
-    plt.savefig(fig_path+figname+'_'+str(my_dpi)+'.png', bbox_inches='tight',figsize=(1200/my_dpi, 675/my_dpi), dpi=my_dpi)
+    plt.savefig(fig_path+figname+'_'+str(my_dpi)+'dpi.png', bbox_inches='tight',figsize=(1200/my_dpi, 675/my_dpi), dpi=my_dpi)
     plt.savefig(fig_path+figname+'.eps', bbox_inches='tight')
     # os.system('open '+fig_path+figname+'.png')
