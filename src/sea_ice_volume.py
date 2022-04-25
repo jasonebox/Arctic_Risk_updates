@@ -167,5 +167,7 @@ if ly=='p':
     # 1200 pixels wide x 675 is optimal for Twitter 16:9 aspect ratio
     my_dpi=300
     plt.savefig(fig_path+figname+'.png', bbox_inches='tight',figsize=(1200/my_dpi, 675/my_dpi), dpi=my_dpi)
+    my_dpi=144
+    plt.savefig(fig_path+figname+'_72dpi.png', bbox_inches='tight',figsize=(1200/my_dpi, 675/my_dpi), dpi=my_dpi)
     plt.savefig(fig_path+figname+'.eps', bbox_inches='tight')
     # os.system('open '+fig_path+figname+'.png')
