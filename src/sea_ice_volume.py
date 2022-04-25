@@ -34,7 +34,7 @@ plt.rcParams['grid.alpha'] = 1
 plt.rcParams['grid.linewidth'] = th/2.
 
 if os.getlogin() == 'jason':
-    base_path = '/Users/jason/Dropbox/Arctic_Risk_updates/'
+    base_path = '/Users/jason/Dropbox/Arctic Risk/Arctic_Risk_updates/'
 
 os.chdir(base_path)
 
@@ -87,7 +87,7 @@ v=np.where(np.isfinite(y))
 # v=np.where((y>=)&(np.isfinite(y)))1
 
 ax.set_title('Arctic Sea Ice Volume '+str(iyear)+' to '+str(fyear))
-ax.plot(x[v[0]], y[v[0]],'-',c=(0.0, 0.2, 0.7),label=lab)
+ax.plot(x[v[0]], y[v[0]],'-',c=(0.0, 0.2, 0.7),label='Arctic sea ice volume')
 
 coefs=stats.pearsonr(x[v[0]],y[v[0]])
 b, m = polyfit(x[v[0]],y[v[0]], 1)
@@ -167,4 +167,5 @@ if ly=='p':
     # 1200 pixels wide x 675 is optimal for Twitter 16:9 aspect ratio
     my_dpi=300
     plt.savefig(fig_path+figname+'.png', bbox_inches='tight',figsize=(1200/my_dpi, 675/my_dpi), dpi=my_dpi)
+    plt.savefig(fig_path+figname+'.eps', bbox_inches='tight')
     # os.system('open '+fig_path+figname+'.png')
