@@ -34,7 +34,7 @@ plt.rcParams['grid.alpha'] = 1
 plt.rcParams['grid.linewidth'] = th/2.
 
 if os.getlogin() == 'jason':
-    base_path = '/Users/jason/Dropbox/Arctic_Risk_monthly/'
+    base_path = '/Users/jason/Dropbox/Arctic_Risk_updates/'
 
 os.chdir(base_path)
 
@@ -44,9 +44,10 @@ os.chdir(base_path)
 # os.system('mv ./raw_data/PIOMAS.vol.daily.1979.2022.Current.v2.1.dat ./raw_data/PIOMAS.vol.daily.1979.2022.Current.v2.1.csv')
 
 # gather monthly data
-gather=0
+gather=1
 if gather:os.system('curl http://psc.apl.uw.edu/wordpress/wp-content/uploads/schweiger/ice_volume/PIOMAS.monthly.Current.v2.1.csv > ./raw_data/PIOMAS.monthly.Current.v2.1.csv')
 
+#%%
 
 # df = pd.read_csv('./raw_data/PIOMAS.vol.daily.1979.2022.Current.v2.1.csv',header=None,skiprows=1)
 df = pd.read_csv('./raw_data/PIOMAS.monthly.Current.v2.1.csv')
@@ -128,7 +129,7 @@ ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:,.0f}'))
 props = dict(boxstyle='round', facecolor='w', alpha=0.5,edgecolor='grey')
 
 mult=0.9
-xx0=0.03 ; yy0=0.22
+xx0=0.02 ; yy0=0.21
 
 c0=0.4
 color=[c0,c0,c0]
@@ -139,7 +140,9 @@ ax.text(xx0,yy0, '%.0f'%nyears+' years\n'
         # +'confidence: '+confidencex+'\n'
         +'change over period of record: %.1f' % change+'%'
         ,transform=ax.transAxes, fontsize=fs*mult,
-        verticalalignment='top', bbox=props,rotation=0,color=color, rotation_mode="anchor")  
+        verticalalignment='top', 
+        #bbox=props,
+        rotation=0,color=color, rotation_mode="anchor")  
 
 mult=1.2
 # ax.text(0.78,0.04, '@Climate_Ice', transform=ax.transAxes,
@@ -148,8 +151,8 @@ ax.text(0.72,0.07, 'arcticrisk.org', transform=ax.transAxes,
         fontsize=font_size*mult,verticalalignment='top',color='maroon', rotation_mode="anchor")
 
 mult=0.85
-xx0=0.02
-ax.text(xx0,0.05, 'data after Schweiger et al 2011, Zhang et al 2003',transform=ax.transAxes, fontsize=fs*mult,
+# xx0=0.02
+ax.text(xx0,0.055, 'data after Schweiger et al 2011, Zhang et al 2003',transform=ax.transAxes, fontsize=fs*mult,
         verticalalignment='top',rotation=0,color=color, rotation_mode="anchor")  
 
 ly='p'
