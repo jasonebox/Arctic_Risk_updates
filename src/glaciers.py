@@ -83,7 +83,7 @@ ax.set_ylabel("cubic kilometers", color=fg)
 # ax.set_ylim(np.nanmin(y)*0.99,np.nanmax(y)*1.01)     
 # ax.set_ylim(0,np.nanmax(y)*1.01)     
 ax.get_xaxis().set_visible(True)
-ax.legend()
+ax.legend(loc='center left')
 ax.set_xlim(1970,2022)
 
 ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:,.0f}'))
@@ -106,105 +106,15 @@ for i in range(cc):
     ax[i].spines['right'].set_color(fg)
     ax[i].tick_params(color=fg, labelcolor=fg)
 
-# plt.subplots_adjust(wspace=0, hspace=0)
-
-# props = dict(boxstyle='round', facecolor='w', alpha=0.5,edgecolor='w')
-# plt.text(1.01,0.01, 'Arctic Monitoring and Assessment Program (AMAP), 2022', transform=ax[cc-1].transAxes, fontsize=font_size*0.9,
-#         verticalalignment='top',rotation=90,color='grey', rottion_mode="anchor")
-
-# plt.text(0.02,0.95, 'Arctic Monitoring and Assessment Program (AMAP)', transform=ax[0].transAxes, fontsize=font_size*0.6,
-#         verticalalignment='top',rotation=0,color='grey', rotation_mode="anchor")
-# plt.text(1.5,-0.03, 'ver.'+versionx, transform=ax[cc-1].transAxes, fontsize=font_size*0.63,
-#         verticalalignment='top',rotation=0,color='grey', rotation_mode="anchor")
-
-# SIV=[]
-# x=[]
-
-# for yy in range(nyears):
-#     for mm in range (12):
-#         print(yy,mm,df.iloc[yy,mm+1])
-#         SIV.append(df.iloc[yy,mm+1])
-#         x.append(yy+iyear+(mm/12))
-
-# x=np.array(x)
-# y=np.array(SIV)
-# y[y<0]=np.nan
-
-# y*=1000
-
-# ylab='Arctic sea ice volume, x 1,000 $km^{3}$'
-# ylab='cubic kilometers'
-
-# v=np.where(np.isfinite(y))
-# # v=np.where((y>=)&(np.isfinite(y)))1
-
-# ax.set_title('Arctic Sea Ice Volume '+str(iyear)+' to '+str(fyear))
-# ax.plot(x[v[0]], y[v[0]],'-',c=(0.0, 0.2, 0.7),label=lab)
-
-# coefs=stats.pearsonr(x[v[0]],y[v[0]])
-# b, m = polyfit(x[v[0]],y[v[0]], 1)
-
-# ax.plot(x[v[0]], b + m * x[v[0]], '--',c=(1., 0., 0.0))
-# ax.set_ylabel(ylab,fontsize=fs)
-
-# confidencex=str("%8.3f"%(1-coefs[1])).lstrip()
-# if confidencex=='1.000':confidencex='>0.999'
-# ny=len(v[0])    
-# mult=0.79
-# xx0=0.04 ; yy0=0.15
-# units=' M $km^{2}$'
-# ny=len(x[v[0]])
-# # change=m*ny/np.mean(y[v[0]])*100.
-# xx0=m*x[v[0][0]]+b
-# xx1=m*x[v[0][-1]]+b
-# change=(xx1-xx0)/xx0*100.
-# ax.set_xlim(iyear-1,fyear+1-0.1)
-
-# xticksx=np.arange(min(x[v[0]]), max(x[v[0]])+1, 2)-1
-
-# ax.set_xticks(xticksx)
-
-# yticksx=np.arange(0,33.5,5)*1000
-# ax.set_ylim(0,33500)
-
-# ax.set_yticks(yticksx,
-#             # rotation=45,
-#             fontsize=fs,
-#             rotation_mode="anchor",ha='right')
-
-# ax.set_xticklabels(xticksx.astype(int),rotation=45,
-#             fontsize=fs,
-#             rotation_mode="anchor",ha='right')
-
-
-# props = dict(boxstyle='round', facecolor='w', alpha=0.5,edgecolor='grey')
-
-# mult=0.9
-# xx0=0.02 ; yy0=0.21
-
-# c0=0.4
-# color=[c0,c0,c0]
-
-# ax.text(xx0,yy0, '%.0f'%nyears+' years\n'
-#         # +'time correlation: %.3f'%coefs[0]+'\n'
-#         +'loss rate: %.0f'%-m+' $km^{3}$ per year\n'
-#         # +'confidence: '+confidencex+'\n'
-#         +'change over period of record: %.1f' % change+'%'
-#         ,transform=ax.transAxes, fontsize=fs*mult,
-#         verticalalignment='top', 
-#         #bbox=props,
-#         rotation=0,color=color, rotation_mode="anchor")  
-
 mult=1.2
-# ax.text(0.78,0.04, '@Climate_Ice', transform=ax.transAxes,
-# ax.text(0.77,0.04, '@AMAP_Arctic', transform=ax.transAxes,
-ax.text(0.68,0.07, 'arcticrisk.org', transform=ax.transAxes,
+ax.text(0.66,0.07, 'arcticrisk.org', transform=ax.transAxes,
         fontsize=font_size*mult,verticalalignment='top',color='maroon', rotation_mode="anchor")
 
-# mult=0.85
-# # xx0=0.02
-# ax.text(xx0,0.055, 'data after Schweiger et al 2011, Zhang et al 2003',transform=ax.transAxes, fontsize=fs*mult,
-#         verticalalignment='top',rotation=0,color=color, rotation_mode="anchor")  
+mult=0.85
+# xx0=0.02
+# world glacier monitoring service
+ax.text(xx0,0.055, 'data after Box et al 2018 and WGMS.ch',transform=ax.transAxes, fontsize=fs*mult,
+        verticalalignment='top',rotation=0,color=color, rotation_mode="anchor")  
 
 ly='p'
 
