@@ -117,10 +117,10 @@ ax.text(0.66,0.07, 'arcticrisk.org', transform=ax.transAxes,
         fontsize=font_size*mult,verticalalignment='top',color='maroon', rotation_mode="anchor")
 
 mult=0.85
-# xx0=0.02
+xx0=0.02
 # world glacier monitoring service
-ax.text(xx0,0.055, 'data after Box et al 2018 and WGMS.ch',transform=ax.transAxes, fontsize=fs*mult,
-        verticalalignment='top',rotation=0,color=color, rotation_mode="anchor")  
+ax.text(xx0,0.055, 'data after Box et al 2018 and WGMS.ch',transform=ax.transAxes, fontsize=font_size*mult,
+        verticalalignment='top',rotation=0,color='maroon', rotation_mode="anchor")  
 
 ly='p'
 
