@@ -1,4 +1,3 @@
-# Arctic_Risk_updates
 # Arctic Risk updates
 
 ## glacier data sources
