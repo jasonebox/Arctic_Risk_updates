@@ -46,7 +46,7 @@ def trendline(cc,x,y,color,lab,units,do_trendline):
     coefs=stats.pearsonr(x[v[0]],y[v[0]])
     # b, m = polyfit(x[v[0]],y[v[0]], 1)
     if do_trendline:
-        v=np.where((x>=2002)&(np.isfinite(y)))
+        v=np.where((x>=2003)&(np.isfinite(y)))
         # ax.plot(x[v[0]], b + m * x[v[0]], '--',c=color)
     #     v=np.where(x>i_year_graphic)
         b, m = polyfit(x[v[0]],y[v[0]], 1)
@@ -55,7 +55,7 @@ def trendline(cc,x,y,color,lab,units,do_trendline):
         increase_or='increase'
         if m<0:increase_or='decrease'
         units='Gigatons per year'
-        ax.plot(x[v[0]], b + m * x[v[0]], '--',c='r',label=increase_or+': '+"%.0f" %change+' '+units)
+        ax.plot(x[v[0]], b + m * x[v[0]], '--',c='r',label=increase_or+': '+"%.0f" %change+' '+units+'\nsince 2003')
 
 # fig, ax = plt.subplots(figsize=(7.5, 6.5))
 fig, ax = plt.subplots()
@@ -66,6 +66,12 @@ iyear=1971 ; nyears=fyear-iyear+1
 
 df['Total']= df.iloc[:, 2:].sum(axis=1)
 print(df.columns)
+
+dM=df['Total'][df.year==2021].values-df['Total'][df.year==2003].values
+dM=-dM[0]/362
+
+print('sea level contribution since 2003: '+"%.0f" %dM+' mm eustatic')
+print('sea level contribution since 2003: '+"%.0f" %(dM*1.4)+' mm barystatic')
 
 cc=0
 
@@ -114,7 +120,7 @@ ax.text(0.66,0.07, 'arcticrisk.org', transform=ax.transAxes,
 mult=0.85
 xx0=0.02
 # world glacier monitoring service
-ax.text(xx0,0.2, 'Greenalnd data: Mankoff et al 2021\nother Arctic glacier data: Box et al 2018 and WGMS.ch',transform=ax.transAxes, fontsize=font_size*mult,
+ax.text(xx0,0.2, 'Greenland data: Mankoff et al 2021\nother Arctic glacier data: Box et al 2018 and WGMS.ch',transform=ax.transAxes, fontsize=font_size*mult,
         verticalalignment='top',rotation=0,color=color, rotation_mode="anchor")  
 
 ly='p'
