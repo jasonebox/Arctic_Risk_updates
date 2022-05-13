@@ -70,8 +70,8 @@ print(df.columns)
 dM=df['Total'][df.year==2021].values-df['Total'][df.year==2003].values
 dM=-dM[0]/362
 
-print('sea level contribution since 2003: '+"%.0f" %dM+' mm eustatic')
-print('sea level contribution since 2003: '+"%.0f" %(dM*1.4)+' mm barystatic')
+print('sea level contribution since 2003: '+"%.0f" %dM+' mm eustatic, i.e. without thermal expansion')
+print('or '+"%.0f" %(dM*1.4)+' mm with +40% thermal expansion')
 
 cc=0
 
